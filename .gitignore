@@ -1,0 +1,29 @@
+
+# Python Virtual Environments
+env/
+venv/
+.venv/
+dbt-env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# dbt generated files
+target/
+dbt_packages/
+logs/
+*.log
+profiles.yml
+
+# Operating System
+.DS_Store
+.AppleDouble
+
+# IDE
+.idea/

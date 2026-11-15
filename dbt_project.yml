@@ -1,0 +1,41 @@
+name: 'dbt_sales_marketing_project'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'dbt_sales_marketing_project'
+
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  dbt_pstgres:
+    +schema: raw
+    +full_refresh: true
+
+models:
+  dbt_sales_marketing_project:
+    staging:
+      +materialized: table
+      +schema: staging
+
+    marts:
+      +materialized: incremental
+      +incremental_strategy: merge
+      +on_schema_change: append_new_columns
+
+      core:
+        +schema: core
+      marketing:
+        +schema: marketing
+      sales:
+        +schema: sales
+
