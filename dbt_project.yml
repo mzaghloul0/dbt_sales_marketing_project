@@ -22,6 +22,10 @@ seeds:
 
 models:
   dbt_sales_marketing_project:
+    data_quality:
+      +schema: data_quality
+      +materialized: view
+
     staging:
       +materialized: table
       +schema: staging

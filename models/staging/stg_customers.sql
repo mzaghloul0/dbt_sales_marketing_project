@@ -26,7 +26,13 @@ basic_cleaned AS (
         END AS gender,
 
         COALESCE(NULLIF(LOWER(TRIM(email)), ''), 'Unknown') AS email,
-        COALESCE(NULLIF(TRIM(phone), ''), 'Unknown') AS phone,
+               CASE
+            WHEN phone IS NULL THEN 'Unknown'
+            WHEN REGEXP_REPLACE(SPLIT_PART(phone, 'x', 1), '[^0-9]', '', 'g') ~ '^(1|001)?[0-9]{10}$'
+                THEN '+1' || RIGHT(REGEXP_REPLACE(SPLIT_PART(phone, 'x', 1), '[^0-9]', '', 'g'), 10)
+                     || COALESCE('x' || NULLIF(SPLIT_PART(phone, 'x', 2), ''), '')
+            ELSE phone
+        END AS phone,
         COALESCE(NULLIF(TRIM(street_address), ''), 'Unknown') AS street_address,
         COALESCE(NULLIF(TRIM(city), ''), 'Unknown') AS city,
 
