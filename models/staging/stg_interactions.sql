@@ -47,7 +47,7 @@ SELECT
     channel,
     CASE
         WHEN channel IN ('Web', 'Mobile App') THEN 'Online'
-        WHEN channel = 'In-Store Kiosk'       THEN 'In-Store'
+        WHEN channel = 'In-Store Kiosk'       THEN 'Store'
         WHEN channel IS NULL                  THEN 'Unknown'
         ELSE 'Other'
     END                                  AS channel_group,

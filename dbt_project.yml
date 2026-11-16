@@ -4,6 +4,9 @@ version: '1.0.0'
 # This setting configures which "profile" dbt uses for this project.
 profile: 'dbt_sales_marketing_project'
 
+vars:
+  date_spine_start: "2019-01-01"
+  date_spine_end: "2028-01-01"
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -41,4 +44,6 @@ models:
         +schema: marketing
       sales:
         +schema: sales
+      support:
+        +schema: support
 

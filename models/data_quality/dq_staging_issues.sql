@@ -98,13 +98,13 @@ campaigns AS (
         ('budget',      'out of range',          budget <= 0,            'High'),
         ('clicks',      'more than impressions', clicks > impressions,   'High'),
         ('conversions', 'more than clicks',      conversions > clicks,   'High'),
-        ('start_date',  'missing',               start_date IS NULL,     'Medium'),
-        ('end_date',    'missing',               end_date IS NULL,       'Medium'),
-        ('budget',      'missing',               budget IS NULL,         'Medium'),
+        ('start_date',  'missing',               start_date IS NULL,     'High'),
+        ('end_date',    'missing',               end_date IS NULL,       'High'),
+        ('budget',      'missing',               budget IS NULL,         'High'),
         ('impressions', 'missing',               impressions IS NULL,    'Medium'),
         ('clicks',      'missing',               clicks IS NULL,         'Medium'),
         ('conversions', 'missing',               conversions IS NULL,    'Medium'),
-        ('roi_pct',     'missing',               roi_pct IS NULL,        'Medium')
+        ('roi',     'missing',                   roi IS NULL,            'High')
     ) AS c (column_name, issue, has_issue, severity)
 
 ),
