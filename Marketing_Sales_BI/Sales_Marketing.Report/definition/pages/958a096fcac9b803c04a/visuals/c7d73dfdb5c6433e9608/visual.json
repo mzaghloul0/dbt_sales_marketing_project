@@ -5,8 +5,8 @@
     "x": 0,
     "y": 0,
     "z": 0,
-    "height": 631.907556415996,
-    "width": 939.18809365357856,
+    "height": 630,
+    "width": 940,
     "tabOrder": 0
   },
   "visual": {
@@ -52,7 +52,8 @@
               },
               "queryRef": "Sum(marketing fct_campaign_performance.budget)",
               "nativeQueryRef": "Budget",
-              "displayName": "Budget"
+              "displayName": "Budget",
+              "format": "0.00"
             },
             {
               "field": {
@@ -71,7 +72,9 @@
                 }
               },
               "queryRef": "Sum(marketing fct_campaign_performance.roi)",
-              "nativeQueryRef": "Summe von roi"
+              "nativeQueryRef": "ROI",
+              "displayName": "ROI",
+              "format": "#,0.00"
             }
           ]
         }
@@ -135,6 +138,37 @@
                   "Value": "false"
                 }
               }
+            },
+            "fillRule": {
+              "linearGradient2": {
+                "min": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'minColor'"
+                      }
+                    }
+                  }
+                },
+                "max": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'maxColor'"
+                      }
+                    }
+                  }
+                },
+                "nullColoringStrategy": {
+                  "strategy": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'asZero'"
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -193,7 +227,20 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Budget und ROI per Campaign'"
+                  "Value": "'Budget and ROI per Campaign in $'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
                 }
               }
             }
