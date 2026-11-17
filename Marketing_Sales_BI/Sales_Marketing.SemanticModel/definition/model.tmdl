@@ -7,9 +7,29 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
+/// core dim that can be used in diff. facts
+queryGroup core
+
+	annotation PBI_QueryGroupOrder = 0
+
+/// sales dims and fcts
+queryGroup sales
+
+	annotation PBI_QueryGroupOrder = 1
+
+/// marketing dims and fcts
+queryGroup marketing
+
+	annotation PBI_QueryGroupOrder = 2
+
+/// support dims and fcts
+queryGroup support
+
+	annotation PBI_QueryGroupOrder = 3
+
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["core dim_channel","core dim_customer","core dim_date","core dim_location","core dim_product","marketing dim_campaign","marketing fct_campaign_performance","marketing fct_interactions","sales dim_payment_method","sales fct_reviews","sales fct_sales","support dim_ticket_profile","support fct_support_tickets"]
+annotation PBI_QueryOrder = ["core dim_location","core dim_channel","core dim_customer","core dim_date","core dim_product","marketing dim_campaign","marketing fct_campaign_performance","marketing fct_interactions","sales dim_payment_method","sales fct_reviews","sales fct_sales","support dim_ticket_profile","support fct_support_tickets"]
 
 annotation PBI_ProTooling = ["DevMode"]
 

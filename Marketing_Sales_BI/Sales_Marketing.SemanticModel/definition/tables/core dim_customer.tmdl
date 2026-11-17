@@ -149,6 +149,7 @@ table 'core dim_customer'
 
 	partition 'core dim_customer' = m
 		mode: import
+		queryGroup: core
 		source =
 				let
 				    Quelle = PostgreSQL.Database("10.211.55.2:5435", "sales_marketing_dwh"),
@@ -157,4 +158,6 @@ table 'core dim_customer'
 				    core_dim_customer
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

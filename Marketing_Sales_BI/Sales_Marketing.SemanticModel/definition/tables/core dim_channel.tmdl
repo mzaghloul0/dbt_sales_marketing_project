@@ -27,6 +27,7 @@ table 'core dim_channel'
 
 	partition 'core dim_channel' = m
 		mode: import
+		queryGroup: core
 		source =
 				let
 				    Quelle = PostgreSQL.Database("10.211.55.2:5435", "sales_marketing_dwh"),
@@ -35,4 +36,6 @@ table 'core dim_channel'
 				    core_dim_channel
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 
