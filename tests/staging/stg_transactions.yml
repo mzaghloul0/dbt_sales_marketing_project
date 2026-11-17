@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: >
+      Cleaned sales transactions with revenue.
+    data_tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "net_revenue <= gross_revenue"
+    columns:
+      - name: transaction_id
+        data_tests:
+          - unique
+          - not_null
+      - name: sales_channel
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Online', 'Store']
+      - name: quantity
+        data_tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 1
+      - name: unit_price
+        data_tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0.01
+      - name: customer_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
+      - name: store_state_code
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_states')
+                field: state_code

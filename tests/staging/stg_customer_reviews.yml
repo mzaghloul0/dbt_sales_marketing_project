@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_customer_reviews
+    description: >
+      One row per review, cleaned.
+    columns:
+      - name: review_id
+        data_tests:
+          - unique
+          - not_null
+      - name: rating
+        data_tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 1
+                max_value: 5
+      - name: customer_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id

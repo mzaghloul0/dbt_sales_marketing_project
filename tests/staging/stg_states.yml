@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_states
+    description: >
+      US states with region and division information.
+    columns:
+      - name: state_code
+        data_tests:
+          - unique
+          - not_null

@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: >
+      Products with category.
+    columns:
+      - name: product_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: product_name
+        data_tests:
+          - unique

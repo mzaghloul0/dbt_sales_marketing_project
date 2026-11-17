@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_campaign
+    description: >
+      Campaigns with type and target segment.
+    columns:
+      - name: campaign_sk
+        data_tests:
+          - unique
+          - not_null

@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_location
+    description: >
+      One row per city and state. -1 = unknown, -2 = online.
+    columns:
+      - name: location_sk
+        data_tests:
+          - unique
+          - not_null

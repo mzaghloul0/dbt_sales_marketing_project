@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_payment_method
+    description: >
+      Payment methods grouped by type.
+    columns:
+      - name: payment_method_sk
+        data_tests:
+          - unique
+          - not_null

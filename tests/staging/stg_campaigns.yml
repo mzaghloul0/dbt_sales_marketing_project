@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_campaigns
+    description: >
+      Cleaned marketing campaigns with KPIs.
+    columns:
+      - name: campaign_id
+        data_tests:
+          - unique
+          - not_null
+      - name: duration_days
+        data_tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 1

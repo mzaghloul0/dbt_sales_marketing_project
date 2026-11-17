@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: fct_support_tickets
+    description: >
+      Support tickets, one row per ticket.
+    data_tests:
+      - dbt_utils.equal_rowcount:
+          arguments:
+            compare_model: ref('stg_support_tickets')
+    columns:
+      - name: ticket_id
+        data_tests:
+          - unique
+          - not_null
+      - name: submission_date_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_sk
+      - name: resolution_date_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_sk
+      - name: customer_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_sk
+      - name: customer_location_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_location')
+                field: location_sk
+      - name: ticket_profile_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_ticket_profile')
+                field: ticket_profile_sk

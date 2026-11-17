@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: dim_ticket_profile
+    description: >
+      Junk dimension: every combination of issue category, priority and status.
+      Combinations of ticket category, priority and status.
+    columns:
+      - name: ticket_profile_sk
+        data_tests:
+          - unique
+          - not_null

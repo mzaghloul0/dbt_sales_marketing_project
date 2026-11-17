@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: dim_channel
+    description: >
+      Sales and interaction channels.
+    columns:
+      - name: channel_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: channel_name
+        data_tests:
+          - unique

@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: >
+      Customer Infos with age group and home location.
+    columns:
+      - name: customer_sk
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        data_tests:
+          - unique
+      - name: home_location_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_location')
+                field: location_sk

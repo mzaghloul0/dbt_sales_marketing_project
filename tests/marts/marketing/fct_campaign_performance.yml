@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_campaign_performance
+    description: >
+      Campaign KPIs, one row per campaign.
+    data_tests:
+      - dbt_utils.equal_rowcount:
+          arguments:
+            compare_model: ref('stg_campaigns')
+    columns:
+      - name: campaign_id
+        data_tests:
+          - unique
+          - not_null
+      - name: campaign_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_campaign')
+                field: campaign_sk
+      - name: start_date_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_sk
+      - name: end_date_sk
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_sk
