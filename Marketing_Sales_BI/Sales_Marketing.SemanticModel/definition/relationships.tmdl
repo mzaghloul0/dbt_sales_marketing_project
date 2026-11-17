@@ -1,0 +1,92 @@
+relationship 53631027-ba58-4458-b78f-c0930015d5ce
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'core dim_customer'.registration_date
+	toColumn: LocalDateTable_17ebf8fe-3bd1-436a-a9d0-9e64fd944515.Date
+
+relationship e6fd97a9-b052-49b0-a71e-89b4106719ab
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'core dim_date'.date_day
+	toColumn: LocalDateTable_3452ce7a-1155-4de3-a956-d1630a7f19d2.Date
+
+relationship 8372f24e-7a3c-4bcd-b45c-01e42455cbb0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'marketing fct_interactions'.interaction_date
+	toColumn: LocalDateTable_21f2ecf0-5e7f-4b13-99a4-59d9ee73d637.Date
+
+relationship 5784abec-51b2-4a31-801a-b12e651f03a2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'sales fct_reviews'.review_date
+	toColumn: LocalDateTable_02207293-595a-4c42-a9f7-e8bd8a0104f5.Date
+
+relationship 31a2b1bf-c756-4a67-b528-27f352e6810f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'sales fct_sales'.transaction_date
+	toColumn: LocalDateTable_1dd4d08b-4e0b-463c-815a-83bd3a1ec59e.Date
+
+relationship 071b627b-3c3b-461d-97ad-c5fc8c0f85df
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'support fct_support_tickets'.submission_date
+	toColumn: LocalDateTable_eb7f4d06-1c50-4c42-be23-1fdbaba20e99.Date
+
+relationship AutoDetected_b4f299c9-7c50-417c-90b9-566bb9e7289b
+	fromColumn: 'marketing fct_interactions'.channel_sk
+	toColumn: 'core dim_channel'.channel_sk
+
+relationship AutoDetected_7580a8b1-6a10-42d1-802d-70090dc00c24
+	fromColumn: 'sales fct_sales'.channel_sk
+	toColumn: 'core dim_channel'.channel_sk
+
+relationship AutoDetected_0be3c048-1ec2-4bbb-b850-61214e5b7f80
+	fromColumn: 'marketing fct_interactions'.customer_sk
+	toColumn: 'core dim_customer'.customer_sk
+
+relationship AutoDetected_ccdd4c18-6de5-4b9e-9a10-05b8e4dcbb8e
+	fromColumn: 'sales fct_reviews'.customer_sk
+	toColumn: 'core dim_customer'.customer_sk
+
+relationship AutoDetected_03189a2c-cbbb-4a79-a75d-de6247e21d76
+	fromColumn: 'sales fct_sales'.customer_sk
+	toColumn: 'core dim_customer'.customer_sk
+
+relationship AutoDetected_fc530534-979f-48db-9228-6ab47249982a
+	fromColumn: 'support fct_support_tickets'.customer_sk
+	toColumn: 'core dim_customer'.customer_sk
+
+relationship AutoDetected_924fe365-2825-4d3d-99f8-87f36708c8d1
+	fromColumn: 'marketing fct_interactions'.date_sk
+	toColumn: 'core dim_date'.date_sk
+
+relationship AutoDetected_715481a5-87c0-4348-85c6-7a5c8083a504
+	fromColumn: 'sales fct_sales'.date_sk
+	toColumn: 'core dim_date'.date_sk
+
+relationship AutoDetected_378b39c7-634e-486f-b795-2438b3f603bb
+	fromColumn: 'marketing fct_interactions'.product_sk
+	toColumn: 'core dim_product'.product_sk
+
+relationship AutoDetected_fe6268f7-5c54-4771-adf1-ab94d8b0c678
+	fromColumn: 'sales fct_reviews'.product_sk
+	toColumn: 'core dim_product'.product_sk
+
+relationship AutoDetected_267fd02a-decd-42ea-91c4-e29de24c3d71
+	fromColumn: 'sales fct_sales'.product_sk
+	toColumn: 'core dim_product'.product_sk
+
+relationship AutoDetected_252d27f3-48b1-4a59-aed5-de9d77599cf8
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'marketing fct_campaign_performance'.campaign_sk
+	toColumn: 'marketing dim_campaign'.campaign_sk
+
+relationship AutoDetected_00094d10-f803-4a7a-9b75-e5888313499f
+	fromColumn: 'sales fct_sales'.payment_method_sk
+	toColumn: 'sales dim_payment_method'.payment_method_sk
+
+relationship AutoDetected_fbe392da-65c1-46ea-ae64-9c74d93512c3
+	fromColumn: 'support fct_support_tickets'.ticket_profile_sk
+	toColumn: 'support dim_ticket_profile'.ticket_profile_sk
+
+relationship dafda791-bdf6-818c-d3b2-2d41d51f2892
+	fromColumn: 'sales fct_sales'.store_location_sk
+	toColumn: 'core dim_location'.location_sk
+

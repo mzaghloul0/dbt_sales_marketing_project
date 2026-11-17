@@ -1,0 +1,38 @@
+model Model
+	culture: de-DE
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: de-DE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["core dim_channel","core dim_customer","core dim_date","core dim_location","core dim_product","marketing dim_campaign","marketing fct_campaign_performance","marketing fct_interactions","sales dim_payment_method","sales fct_reviews","sales fct_sales","support dim_ticket_profile","support fct_support_tickets"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'core dim_channel'
+ref table 'core dim_customer'
+ref table DateTableTemplate_c73255a6-db3e-412f-ba67-0edc9672daae
+ref table LocalDateTable_17ebf8fe-3bd1-436a-a9d0-9e64fd944515
+ref table 'core dim_date'
+ref table LocalDateTable_3452ce7a-1155-4de3-a956-d1630a7f19d2
+ref table 'core dim_location'
+ref table 'core dim_product'
+ref table 'marketing dim_campaign'
+ref table 'marketing fct_campaign_performance'
+ref table 'marketing fct_interactions'
+ref table LocalDateTable_21f2ecf0-5e7f-4b13-99a4-59d9ee73d637
+ref table 'sales dim_payment_method'
+ref table 'sales fct_reviews'
+ref table LocalDateTable_02207293-595a-4c42-a9f7-e8bd8a0104f5
+ref table 'sales fct_sales'
+ref table LocalDateTable_1dd4d08b-4e0b-463c-815a-83bd3a1ec59e
+ref table 'support dim_ticket_profile'
+ref table 'support fct_support_tickets'
+ref table LocalDateTable_eb7f4d06-1c50-4c42-be23-1fdbaba20e99
+
+ref cultureInfo de-DE
+

@@ -1,0 +1,79 @@
+table 'marketing dim_campaign'
+	lineageTag: f1e1dc1c-6351-480e-9e5e-ed5e9fb32a43
+
+	column campaign_sk
+		dataType: string
+		lineageTag: db5ec056-e3ba-4318-967a-5022dfb97ac2
+		summarizeBy: none
+		sourceColumn: campaign_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_id
+		dataType: string
+		lineageTag: df49a48d-e725-4fde-9004-5f7d52e62c95
+		summarizeBy: none
+		sourceColumn: campaign_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_name
+		dataType: string
+		lineageTag: 4458b5bb-565f-4cd3-95e7-db09cc7b9c7b
+		summarizeBy: none
+		sourceColumn: campaign_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_type
+		dataType: string
+		lineageTag: 510a0e73-d49a-4c86-9177-ca7b4e04ccc7
+		summarizeBy: none
+		sourceColumn: campaign_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column media_type
+		dataType: string
+		lineageTag: 4c8fb51e-4cd8-4b4d-a653-bbc42b6da11e
+		summarizeBy: none
+		sourceColumn: media_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_segment
+		dataType: string
+		lineageTag: 8da7308d-3e0f-4ac0-ada9-bb59b7e98754
+		summarizeBy: none
+		sourceColumn: target_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment_category
+		dataType: string
+		lineageTag: 33cce9e6-917a-4274-be4c-4485ccbe0c84
+		summarizeBy: none
+		sourceColumn: segment_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_days
+		dataType: int64
+		formatString: 0
+		lineageTag: efa7c575-8be0-49b9-8d90-fd0fa6d959b3
+		summarizeBy: sum
+		sourceColumn: duration_days
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'marketing dim_campaign' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database("10.211.55.2:5435", "sales_marketing_dwh"),
+				    marketing_dim_campaign = Quelle{[Schema="marketing",Item="dim_campaign"]}[Data]
+				in
+				    marketing_dim_campaign
+
+	annotation PBI_ResultType = Table
+

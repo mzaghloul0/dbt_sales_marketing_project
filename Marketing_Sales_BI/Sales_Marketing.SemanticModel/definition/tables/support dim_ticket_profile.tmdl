@@ -1,0 +1,46 @@
+table 'support dim_ticket_profile'
+	lineageTag: 1c4cfc81-58bb-4f9b-ad46-80ec5be5fcea
+
+	column ticket_profile_sk
+		dataType: string
+		lineageTag: 97fe7eba-7219-46dd-82ac-68ff506434cf
+		summarizeBy: none
+		sourceColumn: ticket_profile_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column issue_category
+		dataType: string
+		lineageTag: e5dd0984-4d12-4b5a-9983-13d1326bdd4e
+		summarizeBy: none
+		sourceColumn: issue_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority
+		dataType: string
+		lineageTag: c08e7089-c9ad-4d3c-9140-5949a7568697
+		summarizeBy: none
+		sourceColumn: priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column resolution_status
+		dataType: string
+		lineageTag: 21718ee2-de5b-4657-9705-3a3d8914ac01
+		summarizeBy: none
+		sourceColumn: resolution_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'support dim_ticket_profile' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database("10.211.55.2:5435", "sales_marketing_dwh"),
+				    support_dim_ticket_profile = Quelle{[Schema="support",Item="dim_ticket_profile"]}[Data]
+				in
+				    support_dim_ticket_profile
+
+	annotation PBI_ResultType = Table
+

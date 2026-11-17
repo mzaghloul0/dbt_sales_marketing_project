@@ -1,0 +1,38 @@
+table 'core dim_channel'
+	lineageTag: e9c6ea43-5190-41c0-9621-4ad74a2018da
+
+	column channel_sk
+		dataType: string
+		lineageTag: 7eaf9808-df0e-4d5e-afbd-e4f7baae4dbb
+		summarizeBy: none
+		sourceColumn: channel_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_name
+		dataType: string
+		lineageTag: 66fe2d08-b369-4855-94e4-b183510177a2
+		summarizeBy: none
+		sourceColumn: channel_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_group
+		dataType: string
+		lineageTag: ee08e15a-46ba-407d-98d4-58d4de1499fa
+		summarizeBy: none
+		sourceColumn: channel_group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'core dim_channel' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database("10.211.55.2:5435", "sales_marketing_dwh"),
+				    core_dim_channel = Quelle{[Schema="core",Item="dim_channel"]}[Data]
+				in
+				    core_dim_channel
+
+	annotation PBI_ResultType = Table
+

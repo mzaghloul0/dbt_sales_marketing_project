@@ -1,0 +1,103 @@
+table 'marketing fct_campaign_performance'
+	lineageTag: 704cf23c-cc86-4fb4-8381-d6a209cf2dbd
+
+	column campaign_id
+		dataType: string
+		lineageTag: 88f915d7-986f-473f-b8a0-a8a425945d86
+		summarizeBy: none
+		sourceColumn: campaign_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_sk
+		dataType: string
+		lineageTag: 6b36a513-aa4d-4f81-9f03-2668f05cb9ea
+		summarizeBy: none
+		sourceColumn: campaign_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date_sk
+		dataType: string
+		lineageTag: edf537b6-17cd-48a3-b151-e582e952c078
+		summarizeBy: none
+		sourceColumn: start_date_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_date_sk
+		dataType: string
+		lineageTag: 9cd64910-fe4d-473c-8ca6-0124222191c7
+		summarizeBy: none
+		sourceColumn: end_date_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column budget
+		dataType: double
+		lineageTag: 8235e1f0-512c-45d8-951a-bf001856cbb6
+		summarizeBy: sum
+		sourceColumn: budget
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column impressions
+		dataType: int64
+		formatString: 0
+		lineageTag: 2303a9da-7777-42e7-a3de-cab30b37a9ec
+		summarizeBy: sum
+		sourceColumn: impressions
+
+		annotation SummarizationSetBy = Automatic
+
+	column clicks
+		dataType: int64
+		formatString: 0
+		lineageTag: 2bbf0a86-7787-4c05-9de0-d69de7c559dd
+		summarizeBy: sum
+		sourceColumn: clicks
+
+		annotation SummarizationSetBy = Automatic
+
+	column conversions
+		dataType: int64
+		formatString: 0
+		lineageTag: 891510bd-b4da-4662-ac71-777f2e727a00
+		summarizeBy: sum
+		sourceColumn: conversions
+
+		annotation SummarizationSetBy = Automatic
+
+	column conversion_rate
+		dataType: double
+		lineageTag: 8f1e8494-63c2-4255-9588-574c48ce41c8
+		summarizeBy: sum
+		sourceColumn: conversion_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column roi
+		dataType: double
+		lineageTag: 68affb91-9f74-4250-8121-a4f9352b6b34
+		summarizeBy: sum
+		sourceColumn: roi
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'marketing fct_campaign_performance' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database("10.211.55.2:5435", "sales_marketing_dwh"),
+				    marketing_fct_campaign_performance = Quelle{[Schema="marketing",Item="fct_campaign_performance"]}[Data]
+				in
+				    marketing_fct_campaign_performance
+
+	annotation PBI_ResultType = Table
+

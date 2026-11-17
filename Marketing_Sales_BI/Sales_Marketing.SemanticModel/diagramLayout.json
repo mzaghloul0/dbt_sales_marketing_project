@@ -1,0 +1,191 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 339.85245939562446,
+            "y": -50
+          },
+          "nodeIndex": "core dim_channel",
+          "nodeLineageTag": "e9c6ea43-5190-41c0-9621-4ad74a2018da",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 681.92237500366025
+          },
+          "nodeIndex": "core dim_customer",
+          "nodeLineageTag": "f512a2bd-1ab0-4257-bf1f-90c1e0a6f9e1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 78.45741108208972
+          },
+          "nodeIndex": "core dim_date",
+          "nodeLineageTag": "7d47bef2-108b-4f72-b82f-6c7a730823fd",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1116.8780438657361,
+            "y": 221.24925345138109
+          },
+          "nodeIndex": "core dim_location",
+          "nodeLineageTag": "e71da984-9802-4d28-b6ef-ab57c77bc976",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 485.05715358513879,
+            "y": 245.5064082554785
+          },
+          "nodeIndex": "core dim_product",
+          "nodeLineageTag": "07ac7a59-dc65-4988-8fcc-31905e7f4a5c",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1867.6836999144753,
+            "y": 66.02054069787016
+          },
+          "nodeIndex": "marketing dim_campaign",
+          "nodeLineageTag": "f1e1dc1c-6351-480e-9e5e-ed5e9fb32a43",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1471.1190842782196,
+            "y": 62.306855829940787
+          },
+          "nodeIndex": "marketing fct_campaign_performance",
+          "nodeLineageTag": "704cf23c-cc86-4fb4-8381-d6a209cf2dbd",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 761.807695005186,
+            "y": 728.4352926253564
+          },
+          "nodeIndex": "marketing fct_interactions",
+          "nodeLineageTag": "74b36676-e17f-485b-9062-25f261f3a691",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 780.50127809921264,
+            "y": 0
+          },
+          "nodeIndex": "sales dim_payment_method",
+          "nodeLineageTag": "f111dde3-6968-4abc-bb5d-e8037c61a90a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 360.47337836778786,
+            "y": 1094.3116033235849
+          },
+          "nodeIndex": "sales fct_reviews",
+          "nodeLineageTag": "c91fcfb7-f9a4-48e9-857b-a8187cab98c3",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 777.44236984577071,
+            "y": 321.24552916968952
+          },
+          "nodeIndex": "sales fct_sales",
+          "nodeLineageTag": "9eaf381d-5984-4659-9687-4a162709d288",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1309.9150603258443,
+            "y": 1024.6729085629788
+          },
+          "nodeIndex": "support dim_ticket_profile",
+          "nodeLineageTag": "1c4cfc81-58bb-4f9b-ad46-80ec5be5fcea",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 938.52285563411237,
+            "y": 1045.1566227567453
+          },
+          "nodeIndex": "support fct_support_tickets",
+          "nodeLineageTag": "8c521f26-ee87-4ec2-90fc-70c856660737",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        }
+      ],
+      "name": "Alle Tabellen",
+      "zoomValue": 50.34689210282324,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Alle Tabellen",
+  "defaultDiagram": "Alle Tabellen"
+}

@@ -1,0 +1,160 @@
+table 'core dim_customer'
+	lineageTag: f512a2bd-1ab0-4257-bf1f-90c1e0a6f9e1
+
+	column customer_sk
+		dataType: string
+		lineageTag: c57c079c-f5ef-47c1-8970-36098d00d08e
+		summarizeBy: none
+		sourceColumn: customer_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 45664ec1-27e3-4011-93d2-ccaf0281d523
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_name
+		dataType: string
+		lineageTag: 471d8740-f996-4c1c-aa8a-20785ac200e3
+		summarizeBy: none
+		sourceColumn: full_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column age
+		dataType: int64
+		formatString: 0
+		lineageTag: a53c7314-a5ad-4894-9ce8-2a24ebbc39ba
+		summarizeBy: sum
+		sourceColumn: age
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_group
+		dataType: string
+		lineageTag: a49a0aba-8994-4926-b3a8-cde8bdc45bef
+		summarizeBy: none
+		sourceColumn: age_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 31fc2433-7c61-4693-bac0-c876a1705e50
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: e267caa2-f5d2-4753-a790-68fdf6c5b474
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column phone
+		dataType: string
+		lineageTag: 19e4ebee-384d-4d83-abfb-f3fb6dd94996
+		summarizeBy: none
+		sourceColumn: phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column street_address
+		dataType: string
+		lineageTag: 913f89a4-cfb2-4d98-811e-83ea7706aab9
+		summarizeBy: none
+		sourceColumn: street_address
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 3ab9235c-7726-4904-bde9-dea6919a923c
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: ca5d6270-025e-45f8-ba51-a4019fee10a2
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_code
+		dataType: string
+		lineageTag: 117d5811-444f-48bd-9b89-8fa5991cf2ae
+		summarizeBy: none
+		sourceColumn: state_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column division
+		dataType: string
+		lineageTag: eb4bab1b-3a1f-4fcc-b1ac-db27839df677
+		summarizeBy: none
+		sourceColumn: division
+
+		annotation SummarizationSetBy = Automatic
+
+	column zip_code
+		dataType: int64
+		formatString: 0
+		lineageTag: 2b51a918-4b65-4cb6-a549-4641385fc87c
+		summarizeBy: sum
+		sourceColumn: zip_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column registration_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e16efb6b-2068-4fe5-81a9-3747f9e2f8bd
+		summarizeBy: none
+		sourceColumn: registration_date
+
+		variation Variation
+			isDefault
+			relationship: 53631027-ba58-4458-b78f-c0930015d5ce
+			defaultHierarchy: LocalDateTable_17ebf8fe-3bd1-436a-a9d0-9e64fd944515.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column preferred_channel
+		dataType: string
+		lineageTag: a0c2fd02-3ddf-40b8-9c20-e1b9420463b4
+		summarizeBy: none
+		sourceColumn: preferred_channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column home_location_sk
+		dataType: string
+		lineageTag: 2dc4217f-3eb3-4a95-9e8c-93e5f54a2f45
+		summarizeBy: none
+		sourceColumn: home_location_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'core dim_customer' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database("10.211.55.2:5435", "sales_marketing_dwh"),
+				    core_dim_customer = Quelle{[Schema="core",Item="dim_customer"]}[Data]
+				in
+				    core_dim_customer
+
+	annotation PBI_ResultType = Table
+

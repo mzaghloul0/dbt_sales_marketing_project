@@ -1,0 +1,105 @@
+table 'support fct_support_tickets'
+	lineageTag: 8c521f26-ee87-4ec2-90fc-70c856660737
+
+	column ticket_id
+		dataType: string
+		lineageTag: c8d4d751-970c-4ede-8f50-5f27085aa049
+		summarizeBy: none
+		sourceColumn: ticket_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column submission_date_sk
+		dataType: string
+		lineageTag: 68e5af73-cebc-4f6e-80d3-04fe0016ce08
+		summarizeBy: none
+		sourceColumn: submission_date_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column resolution_date_sk
+		dataType: string
+		lineageTag: 7c2f1715-da2b-47ed-b248-e0e699ae1e49
+		summarizeBy: none
+		sourceColumn: resolution_date_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_sk
+		dataType: string
+		lineageTag: 1bcabd54-6ed8-4686-a25f-ed287f35c395
+		summarizeBy: none
+		sourceColumn: customer_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_location_sk
+		dataType: string
+		lineageTag: cff82707-a473-4e8f-a670-63f6e2b80c58
+		summarizeBy: none
+		sourceColumn: customer_location_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column ticket_profile_sk
+		dataType: string
+		lineageTag: cb84e49a-7534-4839-974a-deeb08ddddea
+		summarizeBy: none
+		sourceColumn: ticket_profile_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column submission_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a40a7315-874a-4b8a-906e-80c972b9d253
+		summarizeBy: none
+		sourceColumn: submission_date
+
+		variation Variation
+			isDefault
+			relationship: 071b627b-3c3b-461d-97ad-c5fc8c0f85df
+			defaultHierarchy: LocalDateTable_eb7f4d06-1c50-4c42-be23-1fdbaba20e99.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column notes
+		dataType: string
+		lineageTag: 6250203d-2bc3-4384-a281-42e39116018a
+		summarizeBy: none
+		sourceColumn: notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column resolution_hours
+		dataType: double
+		lineageTag: 6e7c4039-31c1-4a11-b7af-f88a2404605e
+		summarizeBy: sum
+		sourceColumn: resolution_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column satisfaction_score
+		dataType: int64
+		formatString: 0
+		lineageTag: cea7d179-45a8-4fee-86eb-8b85bd4a4b78
+		summarizeBy: sum
+		sourceColumn: satisfaction_score
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'support fct_support_tickets' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database("10.211.55.2:5435", "sales_marketing_dwh"),
+				    support_fct_support_tickets = Quelle{[Schema="support",Item="fct_support_tickets"]}[Data]
+				in
+				    support_fct_support_tickets
+
+	annotation PBI_ResultType = Table
+

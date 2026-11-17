@@ -1,0 +1,130 @@
+table 'marketing fct_interactions'
+	lineageTag: 74b36676-e17f-485b-9062-25f261f3a691
+
+	column interaction_id
+		dataType: string
+		lineageTag: 86d0efc7-e3a8-458f-b383-eb7bf5c58161
+		summarizeBy: none
+		sourceColumn: interaction_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_sk
+		dataType: string
+		lineageTag: 6b3fd7f9-e9b8-4f20-8288-d2091f2e9ed4
+		summarizeBy: none
+		sourceColumn: date_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_sk
+		dataType: string
+		lineageTag: f85fd3e3-cf43-42c2-9481-5a46938d34aa
+		summarizeBy: none
+		sourceColumn: customer_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_location_sk
+		dataType: string
+		lineageTag: 108a1533-0359-41a0-b459-0f4b4899df0d
+		summarizeBy: none
+		sourceColumn: customer_location_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_sk
+		dataType: string
+		lineageTag: 2b43a77c-1e3d-4b5f-af8d-be8e9327c5cb
+		summarizeBy: none
+		sourceColumn: channel_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_sk
+		dataType: string
+		lineageTag: 479a5fe3-6977-4799-8d43-ff04251647c9
+		summarizeBy: none
+		sourceColumn: product_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column session_id
+		dataType: string
+		lineageTag: ad4ca0a8-bfc5-41e0-b9a8-ff3a9cd64e6b
+		summarizeBy: none
+		sourceColumn: session_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column interaction_type
+		dataType: string
+		lineageTag: f0d01def-f6db-421e-85a5-b895459ecbf2
+		summarizeBy: none
+		sourceColumn: interaction_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column interaction_target
+		dataType: string
+		lineageTag: dc21df87-aaa2-4d00-b940-3b96ef22fe40
+		summarizeBy: none
+		sourceColumn: interaction_target
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_type
+		dataType: string
+		lineageTag: cc8dc4ce-a363-4355-9755-b5befaab57f4
+		summarizeBy: none
+		sourceColumn: target_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column interaction_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5b857e6f-54c6-44ca-8e46-bfb0f5777bbd
+		summarizeBy: none
+		sourceColumn: interaction_date
+
+		variation Variation
+			isDefault
+			relationship: 8372f24e-7a3c-4bcd-b45c-01e42455cbb0
+			defaultHierarchy: LocalDateTable_21f2ecf0-5e7f-4b13-99a4-59d9ee73d637.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column interaction_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 9e94f8ee-a3ee-48fc-aae7-af557d3b0f56
+		summarizeBy: none
+		sourceColumn: interaction_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column duration
+		dataType: int64
+		formatString: 0
+		lineageTag: 1385b4d7-91d9-42d6-8854-70dd47e5fe1e
+		summarizeBy: sum
+		sourceColumn: duration
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'marketing fct_interactions' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database("10.211.55.2:5435", "sales_marketing_dwh"),
+				    marketing_fct_interactions = Quelle{[Schema="marketing",Item="fct_interactions"]}[Data]
+				in
+				    marketing_fct_interactions
+
+	annotation PBI_ResultType = Table
+
